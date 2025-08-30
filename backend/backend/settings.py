@@ -15,6 +15,8 @@ from pathlib import Path
 # config setup
 from decouple import config, Csv
 import os
+from datetime import timedelta
+
 DEBUG = config('DEBUG',default=False,cast=bool)
 SECRET_KEY = config('SECRET_KEY')
 
@@ -33,6 +35,8 @@ INSTALLED_APPS = [
     'tasks', #django-admin startapp tasks
     'rest_framework', # pip install django-rest-framework
     'corsheaders',
+    'rest_framework_simplejwt.token_blacklist',
+    'rest_framework_simplejwt',
 ]
 
 # REST_FRAMEWORK = {
@@ -136,6 +140,14 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
+
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=60),   # short-lived
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=7),     # longer-lived
+    "ROTATE_REFRESH_TOKENS": True,                   # issue new refresh on refresh
+    "BLACKLIST_AFTER_ROTATION": True,                # invalidate old refresh
+    "AUTH_HEADER_TYPES": ("Bearer",),
+}
 
 
 # Static files (CSS, JavaScript, Images)

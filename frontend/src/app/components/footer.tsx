@@ -1,7 +1,7 @@
 export default function Footer() {
     return (
-        <footer>
-            <h1>This is Footer</h1>
+        <footer className="relative text-center">
+            <code className="font-bold ">&#123;&#125; with ♡ by vineet.</code>
         </footer>
     )
-}
+}  

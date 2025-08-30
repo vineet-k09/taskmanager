@@ -8,7 +8,7 @@ interface TasksProps {
 
 export default function Tasks({ tasks }: TasksProps) {
     return (
-        <div className='columns-2 sm:columns-3'>
+        <div className='my-5 md:columns-3 columns-4 sm:columns-2'>
             {tasks &&
                 tasks.map((t) => {
                     return <div key={t.id} className='border-white border-1 rounded-md break-inside-avoid p-2 mb-4'>

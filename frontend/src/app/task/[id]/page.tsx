@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 
 import type { Task } from "@/app/page";
 
-const baseUrl = "http://localhost:8000/api/tasks/";
+const baseUrl = `${process.env.NEXT_PUBLIC_API_URL}/api/tasks/`
 
 export default function Task() {
     const params = useParams();
@@ -24,13 +24,13 @@ export default function Task() {
 
     return (
         <div className="h-[100vh] flex justify-center items-center">
-            {task && <div className="max-w-[80%] bg-green-950 p-5 rounded-md">
-            <h1>Task Details</h1>
-            <p>Task ID: {task?.id}</p>
-            <h2>{task.task_name}</h2>
-            <code>{task.task_description}</code>
-            </div>
-        }
+            {task ? <div className="max-w-[80%] bg-green-950 p-5 rounded-md">
+                <h1>Task Details</h1>
+                <p>Task ID: {task?.id}</p>
+                <h2>{task.task_name}</h2>
+                <code>{task.task_description}</code>
+            </div> : <div>Fetching data...</div>
+            }
         </div >
     );
 }
