@@ -8,6 +8,7 @@ import Navbar from "./components/navbar";
 import Footer from "./components/footer";
 
 import UserProvider from "./context/UserProvider";
+import axios from "axios";
 
 const baseUrl = `${process.env.NEXT_PUBLIC_API_URL}/api/me/`
 
@@ -40,13 +41,13 @@ export default async function RootLayout({
     try {
       // ⚡ Option A: decode token directly (faster, no fetch)
       // user = decodeJwt(token)
-      const res = await fetch(baseUrl, {
-        headers: { Authorization: `Bearer ${token}` },
-        // cache: "no-store",
+      const res = await axios.post(baseUrl,{},{
+        withCredentials: true
       });
 
-      if (res.ok) {
-        user = await res.json();
+      if (res.data) {
+        user = await res.data;
+        console.log("user=>" + user)
       }
     } catch (err) {
       console.log("Failed to fetch user: ", err)

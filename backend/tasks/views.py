@@ -67,7 +67,7 @@ class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
                 "email": self.user.email,
             }
         })
-        return data
+        return data  
 
 
 class CustomTokenObtainPairView(TokenObtainPairView):
