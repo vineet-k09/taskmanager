@@ -8,16 +8,16 @@ class TaskBoardSerializer(serializers.ModelSerializer):
         model = TaskBoard
         fields = "__all__"
 
-class RegisterSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = User
-        fields = ['username','email','password']
+# class RegisterSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = User
+#         fields = ['username','email','password']
 
-    def create(self, validated_data):
-        password = validated_data['password'].pop()
-        user = User.objects.create(**validated_data)
+#     def create(self, validated_data):
+#         password = validated_data.pop('password')
+#         user = User.objects.create(**validated_data)
 
-        if password is not None:
-            user.set_password(password)
-            user.save()
-        return user
+#         if password is not None:
+#             user.set_password(password)
+#             user.save()
+#         return user

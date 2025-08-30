@@ -89,13 +89,21 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
+    'cloud': {
         'ENGINE': 'django.db.backends.mysql',  # or mysql/sqlite3
-        'NAME': config('DB_NAME'),
-        'USER': config('DB_USER'),
-        'PASSWORD': config('DB_PASSWORD'),
-        'HOST': config('DB_HOST'),
-        'PORT': config('DB_PORT', default='3306'),
+        'NAME': config('DB_CLOUD_NAME'),
+        'USER': config('DB_CLOUD_USER'),
+        'PASSWORD': config('DB_CLOUD_PASSWORD'),
+        'HOST': config('DB_CLOUD_HOST'),
+        'PORT': config('DB_CLOUD_PORT', default='3306'),
+    },
+    'default':{
+        'ENGINE':"django.db.backends.mysql",
+        'NAME':config('DB_NAME'),
+        'USER':config('DB_USER'),
+        'PASSWORD':config('DB_PASSWORD'),
+        'HOST':config('DB_HOST'),
+        'PORT':config('DB_PORT',default='3306')
     }
 }
 
